@@ -59,6 +59,20 @@ def gallery(request):
     context = {'categories': categories, 'foods': foods}
     return render(request, 'photos/gallery.html', context)
 
+@login_required(login_url='login')
+def dashboard(request):
+    user = request.user
+    category = request.GET.get('category')
+    if category == None:
+        foods = Food.objects.filter(category__user=user)
+    else:
+        foods = Food.objects.filter(
+            category__name=category, category__user=user)
+
+    categories = Category.objects.filter(user=user)
+    context = {'categories': categories, 'foods': foods}
+    return render(request, 'photos/dashboard.html', context)
+
 
 @login_required(login_url='login')
 def viewPhoto(request, pk):
@@ -144,3 +158,18 @@ def addFood(request):
 
     context = {'categories': categories}
     return render(request, 'photos/add.html', context)
+
+
+@login_required(login_url='login')
+def calcResourceAllocation(request):
+    user = request.user
+
+    categories = user.category_set.all()
+
+    if request.method == 'POST':
+        data = request.POST
+
+    print('hello')
+
+    context = {'categories': categories}
+    return render(request, 'photos/calcResourceAllocation.html', context)

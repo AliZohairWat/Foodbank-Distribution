@@ -12,4 +12,6 @@ urlpatterns = [
 
     path('food/<str:pk>/', views.viewFood, name='food'),
     path('add/', views.addFood, name='add'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('calcResourceAllocation/', views.calcResourceAllocation, name='calcResourceAllocation'),
 ]
