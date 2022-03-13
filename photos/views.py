@@ -120,11 +120,6 @@ def addFood(request):
         #               'date': datetime.datetime(2016, 8, 18).date(),
         #               'glutenFree': True, 'halal': False}]
 
-        # foodDict.append({'name': data, 
-        #               'weight': 8,
-        #               'date': datetime.datetime(2016, 8, 18).date(),
-        #               'glutenFree': True, 'halal': False})
-
 
         if data['category'] != 'none':
             category = Category.objects.get(id=data['category'])
@@ -144,8 +139,6 @@ def addFood(request):
             glutenFree=data['glutenFree'],
             halal=data['halal'],
         )
-
-        # food.save()
 
         return redirect('gallery')
 
