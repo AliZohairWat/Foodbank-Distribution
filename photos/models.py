@@ -44,4 +44,4 @@ class Food(models.Model):
     halal = models.BooleanField()   
 
     def __str__(self):
-        return 'Food(category=' + str(self.category.name) + ' ,name=' + self.name + ' ,weight=' + self.weight + ' ,date=' + str(self.date) + ' ,glutenFree=' + str(self.glutenFree) + ' ,Halal=' + str(self.halal) + ')'
+        return 'Food(category=' + str(self.category.name) + ' ,name=' + self.name + ' ,weight=' + str(self.weight) + ' ,date=' + str(self.date) + ' ,glutenFree=' + str(self.glutenFree) + ' ,Halal=' + str(self.halal) + ')'

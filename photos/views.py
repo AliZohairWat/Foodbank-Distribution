@@ -107,23 +107,23 @@ def addFood(request):
 
     if request.method == 'POST':
         data = request.POST
-        foodDict = [{'name': 'Chicken', 
-                      'weight': 5,
-                      'date': datetime.datetime(2020, 5, 17).date(),
-                      'glutenFree': True, 'halal': False},
-                     {'name': 'Beef', 
-                      'weight': 6,
-                      'date': datetime.datetime(2021, 2, 20).date(),
-                      'glutenFree': True, 'halal': False}, 
-                     {'name': 'Pork', 
-                      'weight': 8,
-                      'date': datetime.datetime(2016, 8, 18).date(),
-                      'glutenFree': True, 'halal': False}]
+        # foodDict = [{'name': 'Chicken', 
+        #               'weight': 5,
+        #               'date': datetime.datetime(2020, 5, 17).date(),
+        #               'glutenFree': True, 'halal': False},
+        #              {'name': 'Beef', 
+        #               'weight': 6,
+        #               'date': datetime.datetime(2021, 2, 20).date(),
+        #               'glutenFree': True, 'halal': False}, 
+        #              {'name': 'Pork', 
+        #               'weight': 8,
+        #               'date': datetime.datetime(2016, 8, 18).date(),
+        #               'glutenFree': True, 'halal': False}]
 
-        foodDict.push({'name': data, 
-                      'weight': 8,
-                      'date': datetime.datetime(2016, 8, 18).date(),
-                      'glutenFree': True, 'halal': False})
+        # foodDict.append({'name': data, 
+        #               'weight': 8,
+        #               'date': datetime.datetime(2016, 8, 18).date(),
+        #               'glutenFree': True, 'halal': False})
 
 
         if data['category'] != 'none':
@@ -135,15 +135,17 @@ def addFood(request):
         else:
             category = None
         
-        for item in foodDict:
-            food = Food.objects.create(
-                category=category,
-                name=item.name,
-                weight=item.weight,
-                date=item.date,
-                glutenFree=item.glutenFree,
-                halal=item.halal,
-            )
+        
+        food = Food.objects.create(
+            category=category,
+            name=data['name'],
+            weight=data['weight'],
+            date=data['date'],
+            glutenFree=data['glutenFree'],
+            halal=data['halal'],
+        )
+
+        # food.save()
 
         return redirect('gallery')
 
