@@ -56,7 +56,9 @@
 
             </div>
             <div class="col-md-9">
+                
                 <table>
+                    
                     <tr>
                     <th>Category</th>
                     <th>Name</th>
@@ -65,6 +67,7 @@
                     <th>Gluten Free</th>
                     <th>Halal</th>
                     </tr>
+                    {% for food in foods %}
                     <tr>
                     <td>{{food.category.name}}</td>
                     <td>{{food.name}}</td>
@@ -73,7 +76,11 @@
                     <td>{{food.glutenFree}}</td>
                     <td>{{food.halal}}</td>
                     </tr>
+                    {% empty %}
+                    <td>No photos...</td>
+                    {% endfor %}
                 </table>
+
             </div>
         </div>
     </div>
